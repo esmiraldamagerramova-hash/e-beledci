@@ -1,0 +1,51 @@
+/** Giriş səhifəsi üçün sadə tərcümələr. Bələdçinin məzmunu backend-dən gəlir. */
+export const LANGS = [
+  { code: 'az', label: 'Azərbaycan (az)' },
+  { code: 'en', label: 'English (en)' },
+  { code: 'ru', label: 'Русский (ru)' },
+];
+
+export const T = {
+  az: {
+    welcome: 'Elektron xidmətlər bələdçisinə xoş gəlmisiniz!',
+    product: 'Elektron Bələdçi',
+    username: 'İstifadəçi adı və ya e-poçt',
+    password: 'Parol',
+    forgot: 'Parolu unutmusunuz?',
+    submit: 'Hesaba giriş',
+    loading: 'Yoxlanılır…',
+    show: 'Parolu göstər',
+    hide: 'Parolu gizlət',
+    footer: 'Təhsildə yeni imkanlar',
+    demo: 'Demo rejim: istənilən istifadəçi adı və parolla daxil ola bilərsiniz.',
+    forgotMsg: 'Parolun bərpası üçün fakültənin İT dəstək xidmətinə müraciət edin.',
+  },
+  en: {
+    welcome: 'Welcome to the e-services guide!',
+    product: 'E-Services Guide',
+    username: 'Username or e-mail',
+    password: 'Password',
+    forgot: 'Forgot password?',
+    submit: 'Log in',
+    loading: 'Checking…',
+    show: 'Show password',
+    hide: 'Hide password',
+    footer: 'New opportunities in education',
+    demo: 'Demo mode: any username and password will work.',
+    forgotMsg: 'Please contact your faculty IT support to reset your password.',
+  },
+  ru: {
+    welcome: 'Добро пожаловать в справочник электронных услуг!',
+    product: 'Электронный справочник',
+    username: 'Имя пользователя или e-mail',
+    password: 'Пароль',
+    forgot: 'Забыли пароль?',
+    submit: 'Войти',
+    loading: 'Проверка…',
+    show: 'Показать пароль',
+    hide: 'Скрыть пароль',
+    footer: 'Новые возможности в образовании',
+    demo: 'Демо-режим: подойдут любые логин и пароль.',
+    forgotMsg: 'Для восстановления пароля обратитесь в IT-поддержку факультета.',
+  },
+};
