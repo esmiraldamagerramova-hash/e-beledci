@@ -30,11 +30,11 @@ export default function SiteHeader() {
     if (!el) return undefined;
     const header = el.closest('.header');
     const measure = () => {
-      for (let lvl = 0; lvl <= 2; lvl += 1) {
+      for (let lvl = 0; lvl <= 3; lvl += 1) {
         header.dataset.fit = String(lvl);
         if (el.scrollWidth <= el.clientWidth + 1) { setFit(lvl); return; }
       }
-      setFit(2);
+      setFit(3);
     };
     measure();
     const ro = new ResizeObserver(measure);

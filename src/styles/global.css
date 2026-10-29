@@ -928,11 +928,30 @@ body { font-size: 0.97rem; letter-spacing: 0.002em; }
 :root[data-theme='dark'] .app[data-accent='green'] .course { border-top-color: #4cc489; }
 
 
-/* Başlığın avtomatik sığdırılması (SiteHeader → data-fit) */
-.header[data-fit='1'] .header__search-btn span, .header[data-fit='2'] .header__search-btn span,
-.header[data-fit='1'] .brand__text small, .header[data-fit='2'] .brand__text small,
-.header[data-fit='1'] .acct__name, .header[data-fit='2'] .acct__name { display: none; }
-.header[data-fit='1'] .header__search-btn, .header[data-fit='2'] .header__search-btn { padding: 0 0.7rem; }
-.header[data-fit='1'] .mainnav a, .header[data-fit='1'] .mainnav__btn { padding: 0 0.6rem; }
-.header[data-fit='2'] .mainnav { display: none; }
-.header[data-fit='2'] .header__burger { display: inline-grid; }
+/* Başlığın avtomatik sığdırılması (SiteHeader → data-fit 0…3) */
+.header:is([data-fit='1'],[data-fit='2'],[data-fit='3']) .header__search-btn span { display: none; }
+.header:is([data-fit='1'],[data-fit='2'],[data-fit='3']) .header__search-btn { padding: 0 0.7rem; }
+.header:is([data-fit='1'],[data-fit='2']) .mainnav a, .header:is([data-fit='1'],[data-fit='2']) .mainnav__btn { padding: 0 0.6rem; }
+.header:is([data-fit='2'],[data-fit='3']) .brand__text small,
+.header:is([data-fit='2'],[data-fit='3']) .acct__name { display: none; }
+.header[data-fit='3'] .mainnav { display: none; }
+.header[data-fit='3'] .header__burger { display: inline-grid; }
+
+/* Adaptiv Öyrənmə haqqında (əsas səhifə) */
+.about { padding-bottom: 0.5rem; }
+.about__inner { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(1.5rem, 4vw, 3.5rem); align-items: start; }
+.about__text h2 { margin: 0 0 0.9rem; font-size: clamp(1.6rem, 2.6vw, 2.1rem); }
+.about__text h2::after { content: ''; display: block; width: 56px; height: 4px; margin-top: 0.7rem; border-radius: 4px; background: var(--gold); }
+.about__text p { margin: 0; color: var(--ink-2, var(--ink)); font-size: 1.05rem; line-height: 1.7; }
+.about__list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.9rem; }
+.about__item { position: relative; display: flex; gap: 0.9rem; align-items: flex-start; height: 100%; padding: 1.1rem 2.6rem 1.1rem 1.1rem;
+  border: 1px solid var(--line); border-radius: var(--r-lg, 14px); background: var(--surface); color: var(--ink); text-decoration: none; transition: border-color .15s, transform .15s; }
+.about__item:hover { border-color: var(--blue); transform: translateY(-2px); }
+.about__icon { flex-shrink: 0; color: var(--blue); margin-top: 0.1rem; }
+.about__item strong { display: block; font-size: 1.02rem; margin-bottom: 0.25rem; }
+.about__item small { display: block; color: var(--muted); font-size: 0.9rem; line-height: 1.5; }
+.about__go { position: absolute; right: 1rem; top: 1.15rem; color: var(--muted); }
+.about__item:hover .about__go { color: var(--blue); }
+:root[data-theme='dark'] .about__icon { color: #7fb2f5; }
+@media (max-width: 1024px) { .about__inner { grid-template-columns: 1fr; } }
+@media (max-width: 600px) { .about__list { grid-template-columns: 1fr; } }

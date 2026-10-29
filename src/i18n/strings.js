@@ -9,8 +9,8 @@ export const STRINGS = {
   az: {
     uni: 'Azərbaycan Dövlət İqtisad Universiteti',
     uniShort: 'UNEC',
-    product: 'Elektron xidmətlər bələdçisi',
-    productTitle: 'Elektron xidmətlər haqqında bələdçi',
+    product: 'Adaptiv Öyrənmə',
+    productTitle: 'Adaptiv Öyrənmə',
     tagline: 'Fərdi inkişaf · Rəqəmsal təhsil · Uğurlu gələcək',
     slogan1: 'Daha çox bilik,',
     slogan2: 'daha böyük imkanlar!',
@@ -54,7 +54,7 @@ export const STRINGS = {
     logout: 'Çıxış',
     teacher: 'Müəllim',
     student: 'Tələbə',
-    footer: 'Azərbaycan Dövlət İqtisad Universiteti · Elektron xidmətlər bələdçisi',
+    footer: 'Azərbaycan Dövlət İqtisad Universiteti · Adaptiv Öyrənmə',
     loadError: 'Məlumatları yükləmək mümkün olmadı',
 
     // greeting
@@ -106,7 +106,7 @@ export const STRINGS = {
     pdfDownload: 'PDF-i yüklə',
     notFound: 'Səhifə tapılmadı',
     notFoundText: 'Axtardığınız bölmə və ya xidmət mövcud deyil.',
-    backToGuide: 'Bələdçiyə qayıt',
+    backToGuide: 'Əsas səhifəyə qayıt',
 
     // account
     accountTitle: 'Hesabım',
@@ -130,8 +130,8 @@ export const STRINGS = {
   en: {
     uni: 'Azerbaijan State University of Economics',
     uniShort: 'UNEC',
-    product: 'E-services guide',
-    productTitle: 'A guide to electronic services',
+    product: 'Adaptive Learning',
+    productTitle: 'Adaptive Learning',
     tagline: 'Personal growth · Digital education · Successful future',
     slogan1: 'More knowledge,',
     slogan2: 'greater opportunities!',
@@ -173,7 +173,7 @@ export const STRINGS = {
     logout: 'Sign out',
     teacher: 'Teacher',
     student: 'Student',
-    footer: 'Azerbaijan State University of Economics · E-services guide',
+    footer: 'Azerbaijan State University of Economics · Adaptive Learning',
     loadError: 'Could not load data',
 
     morning: 'Good morning',
@@ -222,7 +222,7 @@ export const STRINGS = {
     pdfDownload: 'Download PDF',
     notFound: 'Page not found',
     notFoundText: 'The section or service you are looking for does not exist.',
-    backToGuide: 'Back to the guide',
+    backToGuide: 'Back to the main page',
 
     accountTitle: 'My account',
     accountSub: 'Your personal details and activity in the guide',
@@ -245,8 +245,8 @@ export const STRINGS = {
   ru: {
     uni: 'Азербайджанский государственный экономический университет',
     uniShort: 'UNEC',
-    product: 'Справочник электронных услуг',
-    productTitle: 'Справочник по электронным услугам',
+    product: 'Адаптивное обучение',
+    productTitle: 'Адаптивное обучение',
     tagline: 'Личное развитие · Цифровое образование · Успешное будущее',
     slogan1: 'Больше знаний —',
     slogan2: 'больше возможностей!',
@@ -288,7 +288,7 @@ export const STRINGS = {
     logout: 'Выйти',
     teacher: 'Преподаватель',
     student: 'Студент',
-    footer: 'Азербайджанский государственный экономический университет · Справочник электронных услуг',
+    footer: 'Азербайджанский государственный экономический университет · Адаптивное обучение',
     loadError: 'Не удалось загрузить данные',
 
     morning: 'Доброе утро',
@@ -337,7 +337,7 @@ export const STRINGS = {
     pdfDownload: 'Скачать PDF',
     notFound: 'Страница не найдена',
     notFoundText: 'Такого раздела или услуги не существует.',
-    backToGuide: 'Вернуться в справочник',
+    backToGuide: 'Вернуться на главную',
 
     accountTitle: 'Мой аккаунт',
     accountSub: 'Личные данные и ваша активность в справочнике',

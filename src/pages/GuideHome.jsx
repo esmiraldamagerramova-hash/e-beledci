@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import {
   ArrowRight, PlayCircle, Presentation, Stack, FileText, Lifebuoy, ClockCounterClockwise,
   ClipboardText, Exam, Gradebook, SignIn, DeviceMobile, VideoConference, ChatsCircle, CalendarDots,
+  CourseIc, Quiz, FilmStrip, A11y,
 } from '../components/icons.jsx';
 import { useGuide } from '../context/GuideContext.jsx';
 import { useAuth, firstName } from '../context/AuthContext.jsx';
@@ -21,6 +22,13 @@ const POPULAR_ICONS = {
   forum: ChatsCircle,
   kalendar: CalendarDots,
 };
+
+const ABOUT = [
+  { key: 'about1', to: '/hesabim#kurslar', Ic: CourseIc },
+  { key: 'about2', to: '/ozunu-yoxla', Ic: Quiz },
+  { key: 'about3', to: '/video-telimatlar', Ic: FilmStrip },
+  { key: 'about4', to: '/hesabim#dizayn', Ic: A11y },
+];
 
 export default function GuideHome() {
   const { categories, loading } = useGuide();
@@ -74,6 +82,30 @@ export default function GuideHome() {
         <svg className="hero__wave" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true">
           <path d="M0 50 C 360 0, 760 90, 1440 20 L1440 80 L0 80 Z" />
         </svg>
+      </section>
+
+      {/* ---------------- ADAPTİV ÖYRƏNMƏ HAQQINDA ---------------- */}
+      <section className="section about" id="haqqinda">
+        <div className="container about__inner">
+          <div className="about__text">
+            <h2>{t('aboutTitle')}</h2>
+            <p>{t('aboutText')}</p>
+          </div>
+          <ul className="about__list">
+            {ABOUT.map(({ key, to, Ic }) => (
+              <li key={key}>
+                <Link to={to} className="about__item">
+                  <Ic size={28} className="about__icon" />
+                  <span>
+                    <strong>{t(key)}</strong>
+                    <small>{t(`${key}t`)}</small>
+                  </span>
+                  <ArrowRight size={18} className="about__go" />
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
       </section>
 
       {/* ---------------- POPULAR ---------------- */}
