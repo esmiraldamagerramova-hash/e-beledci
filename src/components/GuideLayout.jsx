@@ -4,15 +4,18 @@ import SiteHeader from './SiteHeader.jsx';
 import SiteFooter from './SiteFooter.jsx';
 import FileTree from './FileTree.jsx';
 import { useGuide } from '../context/GuideContext.jsx';
+import { usePrefs } from '../context/PrefsContext.jsx';
 import { useLang } from '../i18n/LangContext.jsx';
 
 /**
- * Ana səhifə, videolar və hesab — tam enli.
- * Bölmə və xidmət səhifələri — solda "fayl sistemi" kataloqu ilə.
+ * Ana səhifə, videolar, sınaq və hesab — tam enli.
+ * Bölmə və xidmət səhifələri — solda mövzular (fayl sistemi kimi kataloq) ilə.
+ * Kabinetin dizaynı (əsas rəng, sıxlıq) yalnız giriş etdikdən sonra tətbiq olunur.
  */
 export default function GuideLayout() {
   const { t } = useLang();
   const { error } = useGuide();
+  const { accent, density, hideTopics } = usePrefs();
   const { pathname, hash } = useLocation();
   const { categoryId } = useParams();
   const withTree = !!categoryId;
@@ -26,15 +29,18 @@ export default function GuideLayout() {
   }, [pathname, hash]);
 
   return (
-    <div className="app">
+    <div className="app" data-accent={accent} data-density={density}>
       <SiteHeader />
-      <main id="main" className={withTree ? 'container layout-tree' : 'layout-full'}>
-        {withTree && (
+      <main
+        id="main"
+        className={withTree ? `container layout-tree ${hideTopics ? 'topics-hidden' : ''}` : 'layout-full'}
+      >
+        {withTree && !hideTopics && (
           <aside className="sidebar" aria-label={t('catalog')}>
             <FileTree />
           </aside>
         )}
-        <div className="layout-main">
+        <div className="layout-main" id="lesson">
           {error && <div className="container"><div className="notice notice--error">{t('loadError')}: {error.message}</div></div>}
           <Outlet />
         </div>

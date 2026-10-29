@@ -1,10 +1,12 @@
 import { Link, useParams } from 'react-router-dom';
-import { FileText, CaretRight, PlayCircle, Presentation, Globe } from '@phosphor-icons/react';
+import { FileText, CaretRight, PlayCircle, Presentation, Globe } from '../components/icons.jsx';
 import { useGuide } from '../context/GuideContext.jsx';
 import { useLang } from '../i18n/LangContext.jsx';
 import Breadcrumbs from '../components/Breadcrumbs.jsx';
 import CategoryIcon from '../components/CategoryIcon.jsx';
 import NotFound from './NotFound.jsx';
+import LessonToolbar from '../components/LessonToolbar.jsx';
+import { Quiz } from '../components/icons.jsx';
 
 export default function CategoryPage() {
   const { categoryId } = useParams();
@@ -17,7 +19,10 @@ export default function CategoryPage() {
 
   return (
     <div className="page">
-      <Breadcrumbs items={[{ label: cat.title }]} />
+      <div className="page-bar">
+        <Breadcrumbs items={[{ label: cat.title }]} />
+        <LessonToolbar />
+      </div>
 
       <header className="page-head">
         <span className="page-head__icon"><CategoryIcon name={cat.icon} size={36} /></span>
@@ -27,13 +32,16 @@ export default function CategoryPage() {
           </span>
           <h1>{cat.title}</h1>
           <p>{cat.description}</p>
+          <Link to={`/ozunu-yoxla?movzu=${cat.id}`} className="btn btn--outline btn--sm page-head__quiz">
+            <Quiz size={18} /> {t('testThisTopic')}
+          </Link>
         </div>
       </header>
 
       <ul className="svc-list">
         {cat.services.map((s) => (
           <li key={s.id}>
-            <Link to={`/beledci/${cat.id}/${s.id}`} className="svc-row">
+            <Link to={`/bolmeler/${cat.id}/${s.id}`} className="svc-row">
               <FileText size={30} weight="duotone" className="svc-row__icon" />
               <span className="svc-row__main">
                 <strong>{s.name}</strong>

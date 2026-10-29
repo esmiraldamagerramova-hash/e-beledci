@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useLang } from '../i18n/LangContext.jsx';
 
-export default function Brand({ to = '/beledci', compact = false }) {
+export default function Brand({ to = '/esas-sehife', compact = false }) {
   const { t } = useLang();
   return (
     <Link to={to} className="brand" aria-label={`UNEC — ${t('product')}`}>

@@ -1,4 +1,4 @@
-import { CaretRight } from '@phosphor-icons/react';
+import { CaretRight } from './icons.jsx';
 
 /**
  * Fayl sistemi sətri: başlığa klik etdikdə məzmun aşağı doğru açılır.

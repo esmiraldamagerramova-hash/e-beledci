@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { CaretDown, UserCircle, SignOut, ClockCounterClockwise } from '@phosphor-icons/react';
+import { CaretDown, UserCircle, SignOut, ClockCounterClockwise, CourseIc, BrushIc } from './icons.jsx';
 import { useAuth, initials } from '../context/AuthContext.jsx';
 import { useLang } from '../i18n/LangContext.jsx';
 
@@ -39,10 +39,16 @@ export default function AccountMenu() {
               <span>{role} · {user?.email}</span>
             </div>
           </div>
-          <Link to="/beledci/hesab" role="menuitem" onClick={() => setOpen(false)}>
+          <Link to="/hesabim" role="menuitem" onClick={() => setOpen(false)}>
             <UserCircle size={20} weight="duotone" /> {t('myAccount')}
           </Link>
-          <Link to="/beledci/hesab#tarixce" role="menuitem" onClick={() => setOpen(false)}>
+          <Link to="/hesabim#kurslar" role="menuitem" onClick={() => setOpen(false)}>
+            <CourseIc size={20} /> {t('myCourses')}
+          </Link>
+          <Link to="/hesabim#dizayn" role="menuitem" onClick={() => setOpen(false)}>
+            <BrushIc size={20} /> {t('designTitle')}
+          </Link>
+          <Link to="/hesabim#tarixce" role="menuitem" onClick={() => setOpen(false)}>
             <ClockCounterClockwise size={20} weight="duotone" /> {t('recent')}
           </Link>
           <button role="menuitem" onClick={logout} className="acct__logout">

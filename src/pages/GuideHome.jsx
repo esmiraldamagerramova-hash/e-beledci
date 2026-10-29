@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
 import {
   ArrowRight, PlayCircle, Presentation, Stack, FileText, Lifebuoy, ClockCounterClockwise,
-  ClipboardText, Exam, ChartBar, SignIn, DeviceMobile, VideoConference, ChatsCircle, CalendarDots,
-} from '@phosphor-icons/react';
+  ClipboardText, Exam, Gradebook, SignIn, DeviceMobile, VideoConference, ChatsCircle, CalendarDots,
+} from '../components/icons.jsx';
 import { useGuide } from '../context/GuideContext.jsx';
 import { useAuth, firstName } from '../context/AuthContext.jsx';
 import { useLang, greetingKey } from '../i18n/LangContext.jsx';
@@ -14,7 +14,7 @@ import { allServices } from '../utils.js';
 const POPULAR_ICONS = {
   tapsiriq: ClipboardText,
   imtahan: Exam,
-  jurnal: ChartBar,
+  jurnal: Gradebook,
   autentifikasiya: SignIn,
   'moodle-mobile': DeviceMobile,
   bbb: VideoConference,
@@ -61,7 +61,7 @@ export default function GuideHome() {
               <ul>
                 {recentItems.map((s) => (
                   <li key={s.id}>
-                    <Link to={`/beledci/${s.category.id}/${s.id}`}>
+                    <Link to={`/bolmeler/${s.category.id}/${s.id}`}>
                       <span><strong>{s.name}</strong><small>{s.category.title}</small></span>
                       <ArrowRight size={18} weight="bold" />
                     </Link>
@@ -89,7 +89,7 @@ export default function GuideHome() {
             {popular.map((s) => {
               const Ic = POPULAR_ICONS[s.id] || FileText;
               return (
-                <Link key={s.id} to={`/beledci/${s.category.id}/${s.id}`} className="quick__item">
+                <Link key={s.id} to={`/bolmeler/${s.category.id}/${s.id}`} className="quick__item">
                   <Ic size={40} weight="duotone" className="quick__icon" />
                   <strong>{s.name}</strong>
                   <small>{s.brief}</small>
@@ -119,7 +119,7 @@ export default function GuideHome() {
                 const v = c.services.filter((s) => s.video).length;
                 const sl = c.services.filter((s) => s.slides).length;
                 return (
-                  <Link key={c.id} to={`/beledci/${c.id}`} className="cat">
+                  <Link key={c.id} to={`/bolmeler/${c.id}`} className="cat">
                     <div className="cat__top">
                       <span className="cat__icon"><CategoryIcon name={c.icon} size={30} /></span>
                       <span className="cat__num">{String(c.number).padStart(2, '0')}</span>
@@ -148,7 +148,7 @@ export default function GuideHome() {
               <h2>{t('tutorialsTitle')}</h2>
               <p>{t('tutorialsSub')}</p>
             </div>
-            <Link to="/beledci/videolar" className="textlink">{t('seeAll')} <ArrowRight size={16} weight="bold" /></Link>
+            <Link to="/video-telimatlar" className="textlink">{t('seeAll')} <ArrowRight size={16} weight="bold" /></Link>
           </header>
           <div className="tuts">
             {tutorials.map((s) => <TutorialCard key={s.id} s={s} t={t} />)}
@@ -165,8 +165,8 @@ export default function GuideHome() {
             <p>{t('helpText')}</p>
           </div>
           <div className="help__actions">
-            <Link to="/beledci/videolar" className="btn btn--gold"><PlayCircle size={20} weight="fill" /> {t('helpBtn1')}</Link>
-            <Link to="/beledci/hesab" className="btn btn--ghost-light">{t('helpBtn2')}</Link>
+            <Link to="/video-telimatlar" className="btn btn--gold"><PlayCircle size={20} weight="fill" /> {t('helpBtn1')}</Link>
+            <Link to="/ozunu-yoxla" className="btn btn--ghost-light">{t('navQuiz')}</Link>
           </div>
         </div>
       </section>
@@ -176,7 +176,7 @@ export default function GuideHome() {
 
 export function TutorialCard({ s, t }) {
   return (
-    <Link to={`/beledci/${s.category.id}/${s.id}#${s.video ? 'video' : 'slides'}`} className="tut">
+    <Link to={`/bolmeler/${s.category.id}/${s.id}#${s.video ? 'video' : 'slides'}`} className="tut">
       <span className="tut__thumb">
         <img src="/unec-logo-256.jpg" alt="" className="tut__logo" />
         {s.video ? <PlayCircle size={60} weight="fill" className="tut__play" /> : <Presentation size={56} weight="duotone" className="tut__play" />}

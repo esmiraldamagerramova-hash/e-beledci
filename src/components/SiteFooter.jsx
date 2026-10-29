@@ -24,21 +24,21 @@ export default function SiteFooter() {
         <nav aria-label={t('footSections')}>
           <h3>{t('footSections')}</h3>
           <ul>
-            {categories.slice(0, half).map((c) => <li key={c.id}><Link to={`/beledci/${c.id}`}>{c.title}</Link></li>)}
+            {categories.slice(0, half).map((c) => <li key={c.id}><Link to={`/bolmeler/${c.id}`}>{c.title}</Link></li>)}
           </ul>
         </nav>
         <nav aria-label={t('footSections')}>
           <h3 aria-hidden="true">&nbsp;</h3>
           <ul>
-            {categories.slice(half).map((c) => <li key={c.id}><Link to={`/beledci/${c.id}`}>{c.title}</Link></li>)}
+            {categories.slice(half).map((c) => <li key={c.id}><Link to={`/bolmeler/${c.id}`}>{c.title}</Link></li>)}
           </ul>
         </nav>
         <nav aria-label={t('footUseful')}>
           <h3>{t('footUseful')}</h3>
           <ul>
-            <li><Link to="/beledci">{t('navHome')}</Link></li>
-            <li><Link to="/beledci/videolar">{t('navVideos')}</Link></li>
-            <li><Link to="/beledci/hesab">{t('navAccount')}</Link></li>
+            <li><Link to="/esas-sehife">{t('navHome')}</Link></li>
+            <li><Link to="/video-telimatlar">{t('navVideos')}</Link></li>
+            <li><Link to="/hesabim">{t('navAccount')}</Link></li>
           </ul>
         </nav>
       </div>

@@ -12,7 +12,7 @@ npm run build      # сборка в папку dist/
 
 Демо-вход: `teacher1` (Aygün Məmmədova, преподаватель) или `student1` (Murad Əliyev, студент), пароль любой. Можно ввести и любой другой логин — имя возьмётся из него.
 
-Язык (AZ / EN / RU) переключается в верхней полосе на любой странице и запоминается. Личный кабинет: меню с именем справа вверху → «Hesabım» (`/beledci/hesab`).
+Язык (AZ / EN / RU) переключается в верхней полосе на любой странице и запоминается. Личный кабинет: меню с именем справа вверху → «Hesabım» (`/hesabim`).
 
 ## Деплой на Netlify
 
@@ -25,7 +25,7 @@ npm run build      # сборка в папку dist/
 1. `npm install && npm run build`
 2. Перетащите папку `dist` на https://app.netlify.com/drop
 
-Редиректы для React Router уже настроены (`netlify.toml` и `public/_redirects`), поэтому прямые ссылки вида `/beledci/kommunikasiya/forumlar` не дают 404.
+Редиректы для React Router уже настроены (`netlify.toml` и `public/_redirects`), поэтому прямые ссылки вида `/bolmeler/kommunikasiya/forum` не дают 404.
 
 ## Структура
 
@@ -37,7 +37,7 @@ src/
   i18n/strings.js        ← все тексты интерфейса на AZ/EN/RU
   context/               ← аккаунт и история просмотров, данные справочника, настройки (шрифт, фон)
   components/SiteHeader.jsx, SiteFooter.jsx ← шапка (меню «Bölmələr», поиск, язык, аккаунт) и подвал
-  components/CategoryIcon.jsx ← иконки разделов (Phosphor Icons, стиль duotone)
+  components/icons.jsx, CategoryIcon.jsx ← все иконки сайта (Fluent UI)
   components/
     FileTree.jsx         ← левое дерево каталога «как файловая система»
     FsRow.jsx            ← раскрывающаяся вниз строка (Adı, Domain, Brief, Haqqında, Video, Slayd)
@@ -47,7 +47,7 @@ src/
     LoginPage.jsx        ← вход (дизайн по макету)
     GuideHome.jsx        ← главная (приветствие по имени, оглавление)
     AccountPage.jsx      ← личный кабинет
-    VideosPage.jsx       ← все видеоинструкции и слайды (/beledci/videolar)
+    VideosPage.jsx       ← все видеоинструкции и слайды (/video-telimatlar)
     CategoryPage.jsx     ← раздел (список услуг)
     ServicePage.jsx      ← карточка услуги
 public/
@@ -109,5 +109,45 @@ public/
 - Домен `moodle.unec.edu.az` в демо-данных — пример; поменяйте `PLATFORM_DOMAIN` в `src/data/guide.js` или отдавайте реальные значения с бэкенда.
 - Видео в демо — тестовый ролик-заглушка.
 - Для удобства старших преподавателей: размер текста (A− / A+) и тёмный фон в верхней полосе, крупные кликабельные зоны, поиск с учётом букв ə/ı/ö/ü/ş/ç/ğ.
-- Шрифты: Montserrat (заголовки) и Source Sans 3 (текст), встроены в проект через @fontsource — Google Fonts не нужны. Иконки — Phosphor Icons (@phosphor-icons/react).
+- Шрифт: Montserrat на всём сайте (как на странице входа), встроен через @fontsource — Google Fonts не нужны.
+- Иконки: Microsoft Fluent UI Icons (@fluentui/react-icons), однотонные (Regular/Filled), цвет задаётся в CSS. Все иконки собраны в `src/components/icons.jsx` и `src/components/CategoryIcon.jsx`.
+- Страница входа (`src/pages/LoginPage.jsx`, стили `src/styles/login.css`) сделана по макету «UNEC · Moodle Adaptiv Öyrənmə», шрифт Montserrat. Всегда помещается в окно браузера: при нехватке места форма автоматически уменьшается (без прокрутки).
+- Фото кампуса слева — `public/campus.jpg` (вырезано из макета; лучше заменить оригинальным фото в высоком качестве).
 - Список «Ən çox istifadə olunanlar» на главной задаётся в `src/i18n/strings.extra.js` (массив POPULAR).
+
+
+## Обновление: функции для пользователей
+
+- **Только пользовательские разделы.** Технические разделы (интеграции, API, администрирование, безопасность, плагины) и технические услуги скрыты. Список скрытого — в `src/data/guide.user.js` (`HIDDEN_CATEGORIES`, `HIDDEN_SERVICES`); чтобы вернуть раздел, удалите его id из списка.
+- **Шапка закреплена** — полоса с «Görünüş» и языком всегда видна при прокрутке.
+- **1. Tələbə qeydiyyatı / açıq proqramlar** — «Hesabım»: «Mənim kurslarım» (назначенные автоматически + выбранные самим) и «Açıq proqramlar» с кнопкой «Qoşul». Демо-данные: `src/data/programs.js`.
+- **2. Mövzuları gizlət / Tam ekran** — кнопки вверху страницы раздела и услуги: скрыть левую панель тем и открыть материал на весь экран (как PPT). Esc — выход.
+- **3. Özünü yoxla** — `/ozunu-yoxla`: выбор тем, количество вопросов, тест (вопросы строятся автоматически из услуг), разбор ответов, история результатов в кабинете. На каждой странице раздела есть кнопка «Bu mövzu üzrə özünü yoxla».
+- **4. Görünüş (инклюзивность)** — меню в верхней полосе: стандартный, тёмный, высокий контраст, для нарушений цветовосприятия (палитра Okabe–Ito), чёрно-белый; размер текста, выделение ссылок, уменьшение анимации.
+- **5. Dizayn kabineti** — «Hesabım → Dizayn»: основной цвет (синий UNEC, зелёный, фиолетовый, бордовый) и плотность страниц. Применяется только после входа; страница входа остаётся в официальном виде.
+
+Будущие эндпоинты бэкенда для этих функций:
+
+| Метод | Путь | Назначение |
+|---|---|---|
+| GET | `/me/courses` | курсы студента (назначенные и выбранные) |
+| GET | `/programs/open` | открытые программы |
+| POST / DELETE | `/programs/:id/join` | записаться / выйти |
+| POST | `/me/quiz-results` | сохранить результат самопроверки |
+| GET / PUT | `/me/preferences` | вид, цвет, плотность, язык |
+
+Сейчас эти данные хранятся в браузере (`src/storage.js`).
+
+## Адреса страниц
+
+| Страница | Адрес |
+|---|---|
+| Вход | `/giris` |
+| Главная | `/esas-sehife` |
+| Раздел | `/bolmeler/<раздел>` (напр. `/bolmeler/tedris-materiallari`) |
+| Услуга | `/bolmeler/<раздел>/<услуга>` |
+| Видеоинструкции | `/video-telimatlar` |
+| Özünü yoxla | `/ozunu-yoxla` |
+| Личный кабинет | `/hesabim` |
+
+`/` ведёт на `/esas-sehife`; старые ссылки `/beledci/...` автоматически перенаправляются на новые.

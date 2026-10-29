@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { MagnifyingGlass, ArrowRight, FileText } from '@phosphor-icons/react';
+import { MagnifyingGlass, ArrowRight, FileText } from './icons.jsx';
 import { useGuide } from '../context/GuideContext.jsx';
 import { useLang } from '../i18n/LangContext.jsx';
 import { allServices, normalize } from '../utils.js';
@@ -28,7 +28,7 @@ export default function GlobalSearch({ big = false, autoFocus = false, withButto
     return () => document.removeEventListener('mousedown', onDoc);
   }, []);
 
-  const go = (s) => { navigate(`/beledci/${s.category.id}/${s.id}`); setQ(''); setOpen(false); };
+  const go = (s) => { navigate(`/bolmeler/${s.category.id}/${s.id}`); setQ(''); setOpen(false); };
 
   const onKey = (e) => {
     if (e.key === 'Escape') return setOpen(false);

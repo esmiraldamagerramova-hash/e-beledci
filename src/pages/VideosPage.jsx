@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { PlayCircle, Presentation, SquaresFour } from '@phosphor-icons/react';
+import { PlayCircle, Presentation, SquaresFour } from '../components/icons.jsx';
 import { useGuide } from '../context/GuideContext.jsx';
 import { useLang } from '../i18n/LangContext.jsx';
 import Breadcrumbs from '../components/Breadcrumbs.jsx';

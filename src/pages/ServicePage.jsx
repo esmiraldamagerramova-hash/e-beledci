@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import {
-  Tag, Globe, TextAlignLeft, BookOpenText, FilmStrip, Presentation, Copy, Check, ArrowSquareOut,
+  Tag, GlobeColor, SlidesColor, TextAlignLeft, BookOpenText, FilmStrip, Presentation, Copy, Check, ArrowSquareOut,
   CaretLeft, CaretRight, FolderOpen, CaretDoubleDown, CaretDoubleUp,
-} from '@phosphor-icons/react';
+} from '../components/icons.jsx';
 import { useGuide } from '../context/GuideContext.jsx';
 import { useAuth } from '../context/AuthContext.jsx';
 import { useLang } from '../i18n/LangContext.jsx';
@@ -13,6 +13,7 @@ import FsRow from '../components/FsRow.jsx';
 import VideoPlayer from '../components/VideoPlayer.jsx';
 import SlideViewer from '../components/SlideViewer.jsx';
 import CategoryIcon from '../components/CategoryIcon.jsx';
+import LessonToolbar from '../components/LessonToolbar.jsx';
 import NotFound from './NotFound.jsx';
 
 const ALL_OPEN = { name: true, domain: true, brief: true, about: true, video: true, slides: true };
@@ -69,12 +70,15 @@ export default function ServicePage() {
 
   return (
     <div className="page">
-      <Breadcrumbs items={[cat && { label: cat.title, to: `/beledci/${cat.id}` }, { label: svc.name }].filter(Boolean)} />
+      <div className="page-bar">
+        <Breadcrumbs items={[cat && { label: cat.title, to: `/bolmeler/${cat.id}` }, { label: svc.name }].filter(Boolean)} />
+        <LessonToolbar />
+      </div>
 
       <header className="svc-head">
         <div className="svc-head__main">
           {cat && (
-            <Link to={`/beledci/${cat.id}`} className="eyebrow eyebrow--link">
+            <Link to={`/bolmeler/${cat.id}`} className="eyebrow eyebrow--link">
               <CategoryIcon name={cat.icon} size={18} /> {cat.number}. {cat.title}
             </Link>
           )}
@@ -102,7 +106,7 @@ export default function ServicePage() {
           <p className="fs__value">{svc.name}</p>
         </FsRow>
 
-        <FsRow id="domain" icon={Globe} tone="teal" name={t('fDomain')} open={open.domain} onToggle={tog('domain')}>
+        <FsRow id="domain" icon={GlobeColor} tone="teal" name={t('fDomain')} open={open.domain} onToggle={tog('domain')}>
           <div className="domain">
             <code>{svc.domain}</code>
             <button className="btn btn--outline btn--sm" onClick={copy}>
@@ -132,7 +136,7 @@ export default function ServicePage() {
         )}
 
         {svc.slides && (
-          <FsRow id="slides" icon={Presentation} tone="gold" name={t('fSlides')}
+          <FsRow id="slides" icon={SlidesColor} tone="gold" name={t('fSlides')}
             meta={svc.slides.items ? `${t('slideOf')}: ${svc.slides.items.length}` : null}
             open={open.slides} onToggle={tog('slides')}>
             <SlideViewer slides={svc.slides} />
@@ -144,13 +148,13 @@ export default function ServicePage() {
 
       <nav className="pager">
         {prev ? (
-          <Link to={`/beledci/${cat.id}/${prev.id}`} className="pager__link">
+          <Link to={`/bolmeler/${cat.id}/${prev.id}`} className="pager__link">
             <CaretLeft size={22} weight="bold" />
             <span><small>{t('prev')}</small>{prev.name}</span>
           </Link>
         ) : <span />}
         {next ? (
-          <Link to={`/beledci/${cat.id}/${next.id}`} className="pager__link pager__link--next">
+          <Link to={`/bolmeler/${cat.id}/${next.id}`} className="pager__link pager__link--next">
             <span><small>{t('next')}</small>{next.name}</span>
             <CaretRight size={22} weight="bold" />
           </Link>

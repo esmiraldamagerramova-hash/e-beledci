@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { CaretLeft, CaretRight, ArrowsOut, DownloadSimple } from '@phosphor-icons/react';
+import { CaretLeft, CaretRight, ArrowsOut, DownloadSimple } from './icons.jsx';
 import { useLang } from '../i18n/LangContext.jsx';
 
 /**

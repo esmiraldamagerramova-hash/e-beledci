@@ -1,67 +1,114 @@
 /**
- * Saytın öz minimal ikon dəsti (xarici kitabxana yoxdur).
- * Nazik xətt, kvadrat uclar — sakit, rəsmi görünüş üçün.
+ * Saytın ikon dəsti — Microsoft Fluent UI Icons.
+ *  - "Regular" ikonlar: birrəngli xətti ikonlar (bölmələr, kartlar, bloklar) — rəngi CSS-dən gəlir
+ *  - "Regular/Filled" ikonlar: interfeys düymələri (oxlar, axtarış, menyu)
+ * Komponentlər bir yerdə saxlanılır ki, lazım olsa ikonları asanlıqla dəyişəsiniz.
  */
-const base = (size) => ({
-  width: size,
-  height: size,
-  viewBox: '0 0 24 24',
-  fill: 'none',
-  stroke: 'currentColor',
-  strokeWidth: 1.6,
-  strokeLinecap: 'square',
-  strokeLinejoin: 'miter',
-  'aria-hidden': true,
-  focusable: 'false',
-});
+import {
+  // UI
+  Navigation24Regular, Dismiss24Regular, Search24Regular, ChevronDown20Regular, ChevronRight20Regular,
+  ChevronLeft20Regular, ChevronDoubleDown20Regular, ChevronDoubleUp20Regular, WeatherMoon20Regular,
+  WeatherSunny20Regular, TextFont20Regular, Globe20Regular, ArrowRight20Regular, PersonCircle20Regular,
+  History20Regular, SignOut20Regular, Folder20Filled, FolderOpen20Filled, PlayCircle20Filled, SlideText20Filled,
+  Home20Regular, FullScreenMaximize20Regular, ArrowDownload20Regular, HatGraduation24Filled, Person20Regular,
+  LockClosed20Regular, Eye20Regular, EyeOff20Regular, Info20Filled, Grid20Regular, Copy20Regular,
+  Checkmark20Regular, Open20Regular, Delete20Regular, Mail20Regular, Building20Regular, SearchInfo24Regular,
+  Color20Regular, PanelLeftContract20Regular, PanelLeftExpand20Regular, QuizNew20Regular, QuizNew24Regular,
+  Add20Regular, CheckmarkCircle20Filled, DismissCircle20Filled, ArrowCounterclockwise20Regular, Trophy24Regular,
+  PersonAdd20Regular, Accessibility20Regular, Book24Regular, Clock20Regular, PaintBrush20Regular, HatGraduation24Regular,
+  // Rəngli
+  Document24Regular, Library24Regular, Headset24Regular, Laptop24Regular, DataTrending24Regular, PersonStarburst24Regular,
+  Bookmark24Regular, TextBulletListSquare24Regular, BookOpen24Regular, Video24Regular, Board24Regular, Globe24Regular,
+  ContactCard24Regular, ClipboardTask24Regular, CheckboxChecked24Regular, PersonKey24Regular, Phone24Regular, ChatMultiple24Regular,
+  Calendar24Regular, DataBarVerticalAscending24Regular, History24Regular,
+} from '@fluentui/react-icons';
 
-const make = (paths) =>
-  function Icon({ size = 18, className, ...rest }) {
-    return <svg {...base(size)} className={className} {...rest}>{paths}</svg>;
-  };
+/** Hər ikonu eyni interfeysə salır: size, className, style */
+const wrap = (C, name) => {
+  function Icon({ size = 20, className, style, weight, ...rest }) {
+    return <C aria-hidden="true" className={className} style={{ width: size, height: size, flexShrink: 0, ...style }} {...rest} />;
+  }
+  Icon.displayName = name;
+  return Icon;
+};
 
-export const ISearch = make(<><circle cx="10.5" cy="10.5" r="6" /><path d="M15 15l5 5" /></>);
-export const IChevronRight = make(<path d="M9 5l7 7-7 7" />);
-export const IChevronLeft = make(<path d="M15 5l-7 7 7 7" />);
-export const IChevronDown = make(<path d="M5 9l7 7 7-7" />);
-export const IArrowRight = make(<path d="M4 12h15M13 6l6 6-6 6" />);
-export const IArrowUpRight = make(<path d="M7 17L17 7M9 7h8v8" />);
-export const IEye = make(<><path d="M2 12s3.6-6.5 10-6.5S22 12 22 12s-3.6 6.5-10 6.5S2 12 2 12z" /><circle cx="12" cy="12" r="2.8" /></>);
-export const IEyeOff = make(<><path d="M3 3l18 18" /><path d="M10.6 5.6c.5-.1.9-.1 1.4-.1C18.4 5.5 22 12 22 12a17 17 0 01-3.2 3.9M6.4 7.1A16.6 16.6 0 002 12s3.6 6.5 10 6.5c1.6 0 3-.4 4.2-1" /></>);
-export const IMenu = make(<path d="M3 6h18M3 12h18M3 18h12" />);
-export const IClose = make(<path d="M5 5l14 14M19 5L5 19" />);
-export const ICopy = make(<><rect x="8" y="8" width="12" height="12" /><path d="M16 8V4H4v12h4" /></>);
-export const ICheck = make(<path d="M4 12.5l5 5L20 6.5" />);
-export const ILogout = make(<><path d="M14 4H4v16h10" /><path d="M10 12h11M17 8l4 4-4 4" /></>);
-export const IExpand = make(<path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5" />);
-export const IDownload = make(<path d="M12 4v11M7 10l5 5 5-5M4 20h16" />);
-export const IGlobe = make(<><circle cx="12" cy="12" r="9" /><path d="M3 12h18M12 3c2.6 2.8 3.8 5.8 3.8 9s-1.2 6.2-3.8 9c-2.6-2.8-3.8-5.8-3.8-9S9.4 5.8 12 3z" /></>);
+/* ---------- İnterfeys ---------- */
+export const List = wrap(Navigation24Regular, 'List');
+export const X = wrap(Dismiss24Regular, 'X');
+export const MagnifyingGlass = wrap(Search24Regular, 'MagnifyingGlass');
+export const CaretDown = wrap(ChevronDown20Regular, 'CaretDown');
+export const CaretRight = wrap(ChevronRight20Regular, 'CaretRight');
+export const CaretLeft = wrap(ChevronLeft20Regular, 'CaretLeft');
+export const CaretDoubleDown = wrap(ChevronDoubleDown20Regular, 'CaretDoubleDown');
+export const CaretDoubleUp = wrap(ChevronDoubleUp20Regular, 'CaretDoubleUp');
+export const Moon = wrap(WeatherMoon20Regular, 'Moon');
+export const Sun = wrap(WeatherSunny20Regular, 'Sun');
+export const TextAa = wrap(TextFont20Regular, 'TextAa');
+export const Globe = wrap(Globe20Regular, 'Globe');
+export const ArrowRight = wrap(ArrowRight20Regular, 'ArrowRight');
+export const UserCircle = wrap(PersonCircle20Regular, 'UserCircle');
+export const ClockCounterClockwise = wrap(History20Regular, 'ClockCounterClockwise');
+export const SignOut = wrap(SignOut20Regular, 'SignOut');
+export const Folder = wrap(Folder20Filled, 'Folder');
+export const FolderOpen = wrap(FolderOpen20Filled, 'FolderOpen');
+export const PlayCircle = wrap(PlayCircle20Filled, 'PlayCircle');
+export const Presentation = wrap(SlideText20Filled, 'Presentation');
+export const House = wrap(Home20Regular, 'House');
+export const ArrowsOut = wrap(FullScreenMaximize20Regular, 'ArrowsOut');
+export const DownloadSimple = wrap(ArrowDownload20Regular, 'DownloadSimple');
+export const GraduationCap = wrap(HatGraduation24Filled, 'GraduationCap');
+export const User = wrap(Person20Regular, 'User');
+export const LockKey = wrap(LockClosed20Regular, 'LockKey');
+export const Eye = wrap(Eye20Regular, 'Eye');
+export const EyeSlash = wrap(EyeOff20Regular, 'EyeSlash');
+export const Info = wrap(Info20Filled, 'Info');
+export const SquaresFour = wrap(Grid20Regular, 'SquaresFour');
+export const Copy = wrap(Copy20Regular, 'Copy');
+export const Check = wrap(Checkmark20Regular, 'Check');
+export const ArrowSquareOut = wrap(Open20Regular, 'ArrowSquareOut');
+export const Trash = wrap(Delete20Regular, 'Trash');
+export const EnvelopeSimple = wrap(Mail20Regular, 'EnvelopeSimple');
+export const Buildings = wrap(Building20Regular, 'Buildings');
+export const MagnifyingGlassMinus = wrap(SearchInfo24Regular, 'MagnifyingGlassMinus');
 
-/* Fayl sistemi qlifləri — dolğun, klassik görünüş */
-export function IFolder({ size = 18, open = false, className }) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 24 24" className={className} aria-hidden="true">
-      {open ? (
-        <>
-          <path d="M2.5 6.5h7l2 2h10v2.5H6.2L2.5 19z" fill="#d9a441" />
-          <path d="M6.2 11h16.3l-3.7 8.5H2.5z" fill="#e8b85a" />
-        </>
-      ) : (
-        <>
-          <path d="M2.5 5.5h7l2 2h10v12h-19z" fill="#d9a441" />
-          <path d="M2.5 9h19v10.5h-19z" fill="#e8b85a" />
-        </>
-      )}
-    </svg>
-  );
-}
+/* ---------- Bölmə / kart ikonları (birrəngli) ---------- */
+export const FileText = wrap(Document24Regular, 'FileText');
+export const Stack = wrap(Library24Regular, 'Stack');
+export const Lifebuoy = wrap(Headset24Regular, 'Lifebuoy');
+export const Monitor = wrap(Laptop24Regular, 'Monitor');
+export const ChartBar = wrap(DataTrending24Regular, 'ChartBar');
+export const PersonStar = wrap(PersonStarburst24Regular, 'PersonStar');
+export const Tag = wrap(Bookmark24Regular, 'Tag');
+export const TextAlignLeft = wrap(TextBulletListSquare24Regular, 'TextAlignLeft');
+export const BookOpenText = wrap(BookOpen24Regular, 'BookOpenText');
+export const FilmStrip = wrap(Video24Regular, 'FilmStrip');
+export const SlidesColor = wrap(Board24Regular, 'SlidesColor');
+export const GlobeColor = wrap(Globe24Regular, 'GlobeColor');
+export const IdentificationBadge = wrap(ContactCard24Regular, 'IdentificationBadge');
+export const HistoryColor = wrap(History24Regular, 'HistoryColor');
+export const ClipboardText = wrap(ClipboardTask24Regular, 'ClipboardText');
+export const Exam = wrap(CheckboxChecked24Regular, 'Exam');
+export const SignIn = wrap(PersonKey24Regular, 'SignIn');
+export const DeviceMobile = wrap(Phone24Regular, 'DeviceMobile');
+export const VideoConference = wrap(Video24Regular, 'VideoConference');
+export const ChatsCircle = wrap(ChatMultiple24Regular, 'ChatsCircle');
+export const CalendarDots = wrap(Calendar24Regular, 'CalendarDots');
+export const Gradebook = wrap(DataBarVerticalAscending24Regular, 'Gradebook');
 
-export function IFile({ size = 18, className }) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 24 24" className={className} aria-hidden="true" fill="none">
-      <path d="M5.5 2.5h9l4 4v15h-13z" fill="var(--file-bg, #fff)" stroke="currentColor" strokeWidth="1.3" />
-      <path d="M14.5 2.5v4h4" stroke="currentColor" strokeWidth="1.3" />
-      <path d="M8 11h8M8 14h8M8 17h5" stroke="currentColor" strokeWidth="1.1" opacity=".55" />
-    </svg>
-  );
-}
+/* ---------- v6: yeni funksiyalar ---------- */
+export const Palette = wrap(Color20Regular, 'Palette');
+export const PanelHide = wrap(PanelLeftContract20Regular, 'PanelHide');
+export const PanelShow = wrap(PanelLeftExpand20Regular, 'PanelShow');
+export const Quiz = wrap(QuizNew20Regular, 'Quiz');
+export const QuizBig = wrap(QuizNew24Regular, 'QuizBig');
+export const Plus = wrap(Add20Regular, 'Plus');
+export const RightMark = wrap(CheckmarkCircle20Filled, 'RightMark');
+export const WrongMark = wrap(DismissCircle20Filled, 'WrongMark');
+export const Retry = wrap(ArrowCounterclockwise20Regular, 'Retry');
+export const Trophy = wrap(Trophy24Regular, 'Trophy');
+export const JoinIc = wrap(PersonAdd20Regular, 'JoinIc');
+export const A11y = wrap(Accessibility20Regular, 'A11y');
+export const CourseIc = wrap(Book24Regular, 'CourseIc');
+export const ClockIc = wrap(Clock20Regular, 'ClockIc');
+export const BrushIc = wrap(PaintBrush20Regular, 'BrushIc');
+export const CapOutline = wrap(HatGraduation24Regular, 'CapOutline');

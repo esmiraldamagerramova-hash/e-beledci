@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useLang } from '../i18n/LangContext.jsx';
-import { MagnifyingGlassMinus } from '@phosphor-icons/react';
+import { MagnifyingGlassMinus } from '../components/icons.jsx';
 
 export default function NotFound({ inline = false }) {
   const { t } = useLang();
@@ -11,7 +11,7 @@ export default function NotFound({ inline = false }) {
         <span className="empty__code">404</span>
         <h1>{t('notFound')}</h1>
         <p>{t('notFoundText')}</p>
-        <Link to="/beledci" className="btn btn--primary">{t('backToGuide')}</Link>
+        <Link to="/esas-sehife" className="btn btn--primary">{t('backToGuide')}</Link>
       </div>
     </div>
   );

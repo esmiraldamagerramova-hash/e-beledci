@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import { NavLink, useParams } from 'react-router-dom';
-import { CaretRight, Folder, FolderOpen, FileText, PlayCircle, Presentation, MagnifyingGlass, X } from '@phosphor-icons/react';
+import { CaretRight, Folder, FolderOpen, FileText, PlayCircle, Presentation, MagnifyingGlass, X } from './icons.jsx';
 import { useGuide } from '../context/GuideContext.jsx';
 import { useLang } from '../i18n/LangContext.jsx';
 import { normalize } from '../utils.js';
@@ -61,7 +61,7 @@ export default function FileTree() {
                 <button className="tree__chevron" onClick={() => toggle(c.id)} aria-label={c.title}>
                   <CaretRight size={13} weight="bold" className={isOpen ? 'rot' : ''} />
                 </button>
-                <NavLink to={`/beledci/${c.id}`} end className="tree__folder-link" onClick={() => setOpen((p) => new Set(p).add(c.id))}>
+                <NavLink to={`/bolmeler/${c.id}`} end className="tree__folder-link" onClick={() => setOpen((p) => new Set(p).add(c.id))}>
                   <FolderIc size={20} weight="duotone" className="ic-folder" />
                   <span className="tree__label">{c.title}</span>
                   <span className="tree__count">{c.services.length}</span>
@@ -72,7 +72,7 @@ export default function FileTree() {
                 <ul role="group">
                   {c.services.map((s) => (
                     <li key={s.id} role="treeitem">
-                      <NavLink to={`/beledci/${c.id}/${s.id}`} className="tree__file">
+                      <NavLink to={`/bolmeler/${c.id}/${s.id}`} className="tree__file">
                         <FileText size={17} weight="duotone" className="ic-file" />
                         <span className="tree__label">{s.name}</span>
                         <span className="tree__marks">
